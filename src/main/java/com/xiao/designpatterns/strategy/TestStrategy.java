@@ -4,7 +4,7 @@ import com.xiao.designpatterns.strategy.example.strategy.impl.RocketPowered;
 import com.xiao.designpatterns.strategy.example.subject.AbstractDuck;
 import com.xiao.designpatterns.strategy.example.subject.impl.*;
 
-public class Strategy {
+public class TestStrategy {
     public static void main(String[] args) throws Exception{
         AbstractDuck duck;
         //测试一：野鸭 会：游泳、飞、呱呱叫
