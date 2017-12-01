@@ -1,0 +1,35 @@
+@startuml
+title 观察者模式
+interface Subject{
+    -List<Observer> list;
+    +registerObserver(Observer observer);
+    +removeObserver(Observer observer);
+    +notifyObservers();
+}
+
+class ConcreteSubject{
+    registerObserver(Observer observer)
+    removeObserver(Observer observer)
+    notifyObservers(){for list then observer.update()}
+    setState(){notifyObservers()}
+}
+
+Subject <|-- ConcreteSubject
+
+
+interface Observer{
+    +update(Object obj);
+}
+
+class ConcreteObserver{
+    -Subject concreteSubject;
+    update(Object obj);
+}
+
+
+Observer <|-- ConcreteObserver
+
+Subject -> Observer
+ConcreteSubject <- ConcreteObserver
+
+@enduml

@@ -1,0 +1,24 @@
+
+
+@startuml
+title 策略模式
+class Context{
+    -Strategy strategy
+    +method(){strategy.method()}
+    +setStrategy(Strategy strategy)
+}
+interface Strategy{
+    +method()
+}
+
+Context o-> Strategy
+
+
+class ConcreteStrategy{
+    method()
+}
+
+
+Strategy <|-- ConcreteStrategy
+
+@enduml

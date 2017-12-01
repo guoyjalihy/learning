@@ -1,0 +1,24 @@
+@startuml
+title 装饰者模式
+abstract class Component{
+    +method();
+}
+class ConcreteComponent{
+    method();
+}
+Component <|-- ConcreteComponent
+Component <|-- Decorator
+
+class Decorator{
+    method();
+    otherMethod();
+}
+class ConcreteDecorator{
+    Component component;
+    ConcreteDecorator(Component component){};
+    method();
+    otherMethod();
+}
+Decorator <|-- ConcreteDecorator
+
+@enduml
