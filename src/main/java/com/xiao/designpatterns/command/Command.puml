@@ -1,0 +1,33 @@
+@startuml
+title 命令模式
+note as note
+将一个或多个方法的执行封装成一个命令对象
+使的调用方法者无需关心具体执行者是谁
+符合开闭原则的同时极大的提高扩展性
+同时可以支持命令的撤回操作
+end note
+class Client
+
+class Invoker{
+    setCommand()
+}
+Client -> Invoker
+
+interface Command{
+    +execute();
+    +undo();
+}
+Invoker -> Command
+
+class ConcreteCommand{
+    Receiver receiver;
+    execute(){receiver.action()}
+    undo()
+}
+Receiver <- ConcreteCommand
+Command <|-- ConcreteCommand
+class Receiver{
+    action()
+}
+Invoker --> Receiver
+@enduml
