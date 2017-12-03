@@ -1,0 +1,27 @@
+@startuml
+title 状态模式
+class Context{
+    State state;
+    action(){state.action()}
+}
+
+interface State{
+    +action();
+}
+class ConcreteStateA{
+    action();
+}
+class ConcreteStateB{
+    action();
+}
+State <|-- ConcreteStateA
+State <|-- ConcreteStateB
+
+Context <- ConcreteStateA
+Context <- ConcreteStateB
+
+note as note
+通过改变对象的状态来改变对象的行为
+end note
+
+@enduml
