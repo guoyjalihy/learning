@@ -1,6 +1,8 @@
 package com.xiao.designpatterns.state.example.state;
 
-public interface State {
+import java.io.Serializable;
+
+public interface State extends Serializable{
     void insertMoney();
     void backMoney();
     void turn();
