@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiao.socket.dao.AlarmDataDao" >
+
+    <sql id="AllColumn">
+        id,
+        alarm_no as alarmNo,
+        create_time as createTime,
+        device_type as deviceType,
+        device_id as deviceId,
+        clear_time as clearTime,
+        clear_type as clearType,
+        is_clear as isClear,
+        alarm_origin as alarmOrigin,
+        alarm_object as alarmObject,
+        net_virtual_id as netVirtualId,
+        alarm_seq as alarmSeq,
+        alarm_name as alarmName,
+        alarm_type as alarmType,
+        alarm_level as alarmLevel,
+        confirm_time as confirmTime,
+        is_confirm as isConfirm,
+        confirm_user_id as confirmUserId,
+        ip,
+        value,
+        net_id as netId,
+        clear_user_id as clearUserId
+    </sql>
+
+    <select id="findByTimeArea" resultType="AlarmData">
+        select <include refid="AllColumn"/>
+        from alarm_data
+        where create_time >= #{createTime}
+    </select>
+    <select id="findAll" resultType="AlarmData">
+        select <include refid="AllColumn"/>
+        from alarm_data
+        where create_time &lt;= now()
+        order by create_time desc
+        limit 20
+    </select>
+    <select id="findByAlarmSeq" resultType="AlarmData">
+        select <include refid="AllColumn"/>
+        from alarm_data
+        where id >= #{alarmSeq}
+    </select>
+
+    <select id="findGreaterThanAreaById" resultType="AlarmData">
+        select <include refid="AllColumn"/>
+        from alarm_data
+        where id >= #{id}
+    </select>
+
+    <select id="getMaxId" resultType="Long">
+        select max(id)
+        from alarm_data
+    </select>
+
+
+</mapper>
